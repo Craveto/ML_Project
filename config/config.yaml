@@ -1,0 +1,8 @@
+data:
+  target_column: "Churn"
+  id_column: "customerID"
+  test_size: 0.2
+  random_state: 42
+mlflow:
+  experiment_name_template: "/Users/{}/telco_churn_mlops"
+  parent_run_name: "Telco_End_to_End_Pipeline"
