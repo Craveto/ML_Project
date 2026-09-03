@@ -55,5 +55,7 @@ jobs:
         DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
         DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         DATABRICKS_USER_EMAIL: ${{ secrets.DATABRICKS_USER_EMAIL }}
+        VOLUME_CSV_PATH: ${{ secrets.VOLUME_CSV_PATH }}
       run: |
         python main.py
+
