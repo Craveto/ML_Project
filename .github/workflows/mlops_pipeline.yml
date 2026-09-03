@@ -40,7 +40,7 @@ jobs:
     # 5. Run Preprocessing Unit Tests
     - name: Run Unit Tests with Pytest
       run: |
-        pytest tests/
+        python -m pytest
 
     # 6. Execute End-to-End Pipeline & Log to Databricks
     # Injects GitHub repository secrets into runner environment variables temporarily
