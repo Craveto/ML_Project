@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from src.data_ingestion import download_data_from_volume
 from src.feature_engineering import preprocess_telco_data
 from src.train import train_and_select_model
-from src.evaluate import evaluate_best_model
+from src.evaluate import evaluate_best_model_and_log_custom_model
 
 load_dotenv()
 
@@ -33,7 +33,7 @@ def run_pipeline():
         mlflow.log_params(best_params)
         
         # Phase 4: Final Validation Evaluation
-        evaluate_best_model(best_params, X_train, X_val, y_train, y_val)
+        evaluate_best_model_and_log_custom_model(best_params, X_train, X_val, y_train, y_val)
         
         print("\n🎉 End-to-End MLOps Pipeline Run execution completed successfully!")
 

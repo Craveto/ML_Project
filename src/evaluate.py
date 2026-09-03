@@ -2,8 +2,9 @@ import mlflow
 import xgboost as xgb
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+from src.custom_model import TelcoChurnPyFuncModel
 
-def evaluate_best_model(best_params, X_train, X_val, y_train, y_val):
+def evaluate_best_model_and_log_custom_model(best_params, X_train, X_val, y_train, y_val):
     print("📊 Evaluating ultimate champion model configuration...")
     
     if best_params["model_type"] == "xgboost":
@@ -33,4 +34,23 @@ def evaluate_best_model(best_params, X_train, X_val, y_train, y_val):
     
     # Log metrics to parent execution
     mlflow.log_metrics(metrics)
-    print(f"Champion Validation Metrics logged: {metrics}")
+    
+    
+     # Get the exact list of columns the model expects
+    training_columns = list(X_train.columns)
+    
+    # Instantiate the Custom PyFunc wrapper
+    pyfunc_wrapper = TelcoChurnPyFuncModel(
+        trained_model=model,
+        training_columns=training_columns
+    )
+    
+    # 📦 Log the Custom PyFunc Model to MLflow Tracking Server
+    print("📦 Uploading integrated Custom PyFunc Model to Databricks...")
+    mlflow.pyfunc.log_model(
+        artifact_path="telco_churn_pyfunc_model",
+        python_model=pyfunc_wrapper
+    )
+    print("✅ Model logged successfully!")
+    
+    # print(f"Champion Validation Metrics logged: {metrics}")
