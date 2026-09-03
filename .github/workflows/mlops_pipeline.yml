@@ -50,4 +50,4 @@ jobs:
         DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         DATABRICKS_USER_EMAIL: ${{ secrets.DATABRICKS_USER_EMAIL }}
       run: |
-        python main.py
+        python -m main.py
