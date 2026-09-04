@@ -2,4 +2,3 @@
 __pycache__
 
 python_files/test_mlflow_connect.py
-requirements.txt
