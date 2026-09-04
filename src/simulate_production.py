@@ -7,10 +7,11 @@ mlflow.set_tracking_uri("databricks")
 
 # 1. Fetch your model directly from Databricks using its unique Run ID
 # Copy the Run ID from your Databricks Experiment UI dashboard URL or page
-RUN_ID = "f7f50828ac4e48f5bcb7d9a29f9a8cf6" 
-model_uri = f"runs:/{RUN_ID}/telco_churn_pyfunc_model"
 
-print(f"Downloading packaged production model from URI: {model_uri}...")
+# model_uri = f"runs:/{RUN_ID}/telco_churn_pyfunc_model"
+
+# print(f"Downloading packaged production model from URI: {model_uri}...")
+print("model is taking from local path")
 loaded_model = mlflow.pyfunc.load_model("C:/ml_project/ml_model/")
 
 # 2. Simulate raw data sent by a frontend production web application (Unprocessed JSON)
