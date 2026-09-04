@@ -11,7 +11,7 @@ RUN_ID = "f7f50828ac4e48f5bcb7d9a29f9a8cf6"
 model_uri = f"runs:/{RUN_ID}/telco_churn_pyfunc_model"
 
 print(f"Downloading packaged production model from URI: {model_uri}...")
-loaded_model = mlflow.pyfunc.load_model(model_uri)
+loaded_model = mlflow.pyfunc.load_model("C:/ml_project/ml_model/")
 
 # 2. Simulate raw data sent by a frontend production web application (Unprocessed JSON)
 raw_production_data = pd.DataFrame([{
