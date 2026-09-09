@@ -7,4 +7,5 @@ optuna
 python-dotenv
 pyyaml
 mlflow
+evidently
 
